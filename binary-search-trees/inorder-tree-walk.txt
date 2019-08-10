@@ -1,0 +1,11 @@
+The Binary-search-tree property allows us to print out all the keys in a binary search tree in sorted order by a simple
+recursive algorithm, called an "inorder tree walk".
+
+Algo:
+INORDER-TREE-WALK(x)
+  if x!= NIL
+    INORDER-TREE-WALK(x.left)
+    print x.key
+    INORDER-TREE-WALK(x.right)
+    
+# here x is the pointer to a node, the earliest being the top node
