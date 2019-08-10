@@ -30,3 +30,12 @@ The running time of TREE-SEARCH is O(h) where h is the height of the tree
       return x
       
  Both the procedures run in O(h) time on a tree of height h
+
+  TREE-SUCCESSOR(x)
+      if x.right != NIL
+          return TREE-MINIMUM(x.right)
+      y = x.p
+      while y!= NIL and x==y.right
+          x = y
+          y = y.p
+      return y
