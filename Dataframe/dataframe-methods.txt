@@ -1,0 +1,259 @@
+pandas.DataFrame
+
+
+class pandas.DataFrame(data=None, index=None, columns=None, dtype=None, copy=False)[source]
+
+Two-dimensional size-mutable, potentially heterogeneous tabular data structure with labeled axes (rows and columns). Arithmetic operations align on both row and column labels. Can be thought of as a dict-like container for Series objects. The primary pandas data structure.
+
+Parameters:	
+      data : ndarray (structured or homogeneous), Iterable, dict, or DataFrame
+      Dict can contain Series, arrays, constants, or list-like objects
+
+      index : Index or array-like
+      Index to use for resulting frame. Will default to RangeIndex if no indexing information part of input data and no index provided
+
+      columns : Index or array-like
+      Column labels to use for resulting frame. Will default to RangeIndex (0, 1, 2, …, n) if no column labels are provided
+
+      dtype : dtype, default None
+      Data type to force. Only a single dtype is allowed. If None, infer
+
+      copy : boolean, default False
+      Copy data from inputs. Only affects DataFrame / 2d ndarray input
+
+Example:
+    >>> d = {'col1': [1, 2], 'col2': [3, 4]}
+    >>> df = pd.DataFrame(data=d)
+    >>> df
+       col1  col2
+    0     1     3
+    1     2     4
+    
+
+Attributes:
+
+T	: Transpose index and columns.
+at :	Access a single value for a row/column label pair.
+axes :	Return a list representing the axes of the DataFrame.
+blocks :	(DEPRECATED) Internal property, property synonym for as_blocks().
+columns	: The column labels of the DataFrame.
+dtypes :	Return the dtypes in the DataFrame.
+empty :	Indicator whether DataFrame is empty.
+ftypes :	(DEPRECATED) Return the ftypes (indication of sparse/dense and dtype) in DataFrame.
+iat :	Access a single value for a row/column pair by integer position.
+iloc :	Purely integer-location based indexing for selection by position.
+index :	The index (row labels) of the DataFrame.
+is_copy :	Return the copy.
+ix :	A primarily label-location based indexer, with integer position fallback.
+loc :	Access a group of rows and columns by label(s) or a boolean array.
+ndim :	Return an int representing the number of axes / array dimensions.
+shape :	Return a tuple representing the dimensionality of the DataFrame.
+size :	Return an int representing the number of elements in this object.
+style :	Property returning a Styler object containing methods for building a styled HTML representation fo the DataFrame.
+values :	Return a Numpy representation of the DataFrame.
+
+
+
+Methods:
+
+abs(self)::::	Return a Series/DataFrame with absolute numeric value of each element.
+add(self, other[, axis, level, fill_value])::::	Get Addition of dataframe and other, element-wise (binary operator add).
+add_prefix(self, prefix):::::	Prefix labels with string prefix.
+add_suffix(self, suffix):::::	Suffix labels with string suffix.
+agg(self, func[, axis])::::	Aggregate using one or more operations over the specified axis.
+aggregate(self, func[, axis])::::	Aggregate using one or more operations over the specified axis.
+align(self, other[, join, axis, level, …])::::	Align two objects on their axes with the specified join method for each axis Index.
+all(self[, axis, bool_only, skipna, level])::::	Return whether all elements are True, potentially over an axis.
+any(self[, axis, bool_only, skipna, level])::::	Return whether any element is True, potentially over an axis.
+append(self, other[, ignore_index, …])::::	Append rows of other to the end of caller, returning a new object.
+apply(self, func[, axis, broadcast, raw, …])::::	Apply a function along an axis of the DataFrame.
+applymap(self, func)::::	Apply a function to a Dataframe elementwise.
+as_blocks(self[, copy]):::::	(DEPRECATED) Convert the frame to a dict of dtype -> Constructor Types that each has a homogeneous dtype.
+as_matrix(self[, columns])::::	(DEPRECATED) Convert the frame to its Numpy-array representation.
+asfreq(self, freq[, method, how, normalize, …]):::::	Convert TimeSeries to specified frequency.
+asof(self, where[, subset])::::	Return the last row(s) without any NaNs before where.
+assign(self, \*\*kwargs)::::	Assign new columns to a DataFrame.
+astype(self, dtype[, copy, errors])::::	Cast a pandas object to a specified dtype dtype.
+at_time(self, time[, asof, axis])::::		Select values at particular time of day (e.g.
+between_time(self, start_time, end_time[, …])::::		Select values between particular times of the day (e.g., 9:00-9:30 AM).
+bfill(self[, axis, inplace, limit, downcast])::::		Synonym for DataFrame.fillna() with method='bfill'.
+bool(self)::::		Return the bool of a single element PandasObject.
+boxplot(self[, column, by, ax, fontsize, …])	::::	Make a box plot from DataFrame columns.
+clip(self[, lower, upper, axis, inplace])::::		Trim values at input threshold(s).
+clip_lower(self, threshold[, axis, inplace])::::		(DEPRECATED) Trim values below a given threshold.
+clip_upper(self, threshold[, axis, inplace])::::		(DEPRECATED) Trim values above a given threshold.
+combine(self, other, func[, fill_value, …])::::		Perform column-wise combine with another DataFrame.
+combine_first(self, other)	::::	Update null elements with value in the same location in other.
+compound(self[, axis, skipna, level])::::		(DEPRECATED) Return the compound percentage of the values for the requested axis.
+copy(self[, deep])::::		Make a copy of this object’s indices and data.
+corr(self[, method, min_periods])::::		Compute pairwise correlation of columns, excluding NA/null values.
+corrwith(self, other[, axis, drop, method])::::		Compute pairwise correlation between rows or columns of DataFrame with rows or columns of Series or DataFrame.
+count(self[, axis, level, numeric_only])	::::	Count non-NA cells for each column or row.
+cov(self[, min_periods])	::::	Compute pairwise covariance of columns, excluding NA/null values.
+cummax(self[, axis, skipna])::::		Return cumulative maximum over a DataFrame or Series axis.
+cummin(self[, axis, skipna])::::		Return cumulative minimum over a DataFrame or Series axis.
+cumprod(self[, axis, skipna])::::	Return cumulative product over a DataFrame or Series axis.
+cumsum(self[, axis, skipna])::::		Return cumulative sum over a DataFrame or Series axis.
+describe(self[, percentiles, include, exclude])::::		Generate descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values.
+diff(self[, periods, axis])	::::	First discrete difference of element.
+div(self, other[, axis, level, fill_value])::::		Get Floating division of dataframe and other, element-wise (binary operator truediv).
+divide(self, other[, axis, level, fill_value])	::::	Get Floating division of dataframe and other, element-wise (binary operator truediv).
+dot(self, other)::::		Compute the matrix multiplication between the DataFrame and other.
+drop(self[, labels, axis, index, columns, …])::::		Drop specified labels from rows or columns.
+drop_duplicates(self[, subset, keep, inplace])::::		Return DataFrame with duplicate rows removed, optionally only considering certain columns.
+droplevel(self, level[, axis])::::		Return DataFrame with requested index / column level(s) removed.
+dropna(self[, axis, how, thresh, subset, …])	::::	Remove missing values.
+duplicated(self[, subset, keep])::::		Return boolean Series denoting duplicate rows, optionally only considering certain columns.
+eq(self, other[, axis, level])	::::	Get Equal to of dataframe and other, element-wise (binary operator eq).
+equals(self, other)	::::	Test whether two objects contain the same elements.
+eval(self, expr[, inplace])::::		Evaluate a string describing operations on DataFrame columns.
+ewm(self[, com, span, halflife, alpha, …])::::		Provide exponential weighted functions.
+expanding(self[, min_periods, center, axis])::::		Provide expanding transformations.
+explode(self, column, Tuple])	::::	Transform each element of a list-like to a row, replicating the index values.
+ffill(self[, axis, inplace, limit, downcast])	Synonym for DataFrame.fillna() with method='ffill'.
+fillna(self[, value, method, axis, inplace, …])	Fill NA/NaN values using the specified method.
+filter(self[, items, like, regex, axis])	Subset rows or columns of dataframe according to labels in the specified index.
+first(self, offset)	Convenience method for subsetting initial periods of time series data based on a date offset.
+first_valid_index(self)	Return index for first non-NA/null value.
+floordiv(self, other[, axis, level, fill_value])	Get Integer division of dataframe and other, element-wise (binary operator floordiv).
+from_dict(data[, orient, dtype, columns])	Construct DataFrame from dict of array-like or dicts.
+from_items(items[, columns, orient])	(DEPRECATED) Construct a DataFrame from a list of tuples.
+from_records(data[, index, exclude, …])	Convert structured or record ndarray to DataFrame.
+ge(self, other[, axis, level])	Get Greater than or equal to of dataframe and other, element-wise (binary operator ge).
+get(self, key[, default])	Get item from object for given key (ex: DataFrame column).
+get_dtype_counts(self)	(DEPRECATED) Return counts of unique dtypes in this object.
+get_ftype_counts(self)	(DEPRECATED) Return counts of unique ftypes in this object.
+get_value(self, index, col[, takeable])	(DEPRECATED) Quickly retrieve single value at passed column and index.
+get_values(self)	(DEPRECATED) Return an ndarray after converting sparse values to dense.
+groupby(self[, by, axis, level, as_index, …])	Group DataFrame or Series using a mapper or by a Series of columns.
+gt(self, other[, axis, level])	Get Greater than of dataframe and other, element-wise (binary operator gt).
+head(self[, n])	Return the first n rows.
+hist(data[, column, by, grid, xlabelsize, …])	Make a histogram of the DataFrame’s.
+idxmax(self[, axis, skipna])	Return index of first occurrence of maximum over requested axis.
+idxmin(self[, axis, skipna])	Return index of first occurrence of minimum over requested axis.
+infer_objects(self)	Attempt to infer better dtypes for object columns.
+info(self[, verbose, buf, max_cols, …])	Print a concise summary of a DataFrame.
+insert(self, loc, column, value[, …])	Insert column into DataFrame at specified location.
+interpolate(self[, method, axis, limit, …])	Interpolate values according to different methods.
+isin(self, values)	Whether each element in the DataFrame is contained in values.
+isna(self)	Detect missing values.
+isnull(self)	Detect missing values.
+items(self)	Iterator over (column name, Series) pairs.
+iteritems(self)	Iterator over (column name, Series) pairs.
+iterrows(self)	Iterate over DataFrame rows as (index, Series) pairs.
+itertuples(self[, index, name])	Iterate over DataFrame rows as namedtuples.
+join(self, other[, on, how, lsuffix, …])	Join columns of another DataFrame.
+keys(self)	Get the ‘info axis’ (see Indexing for more)
+kurt(self[, axis, skipna, level, numeric_only])	Return unbiased kurtosis over requested axis using Fisher’s definition of kurtosis (kurtosis of normal == 0.0).
+kurtosis(self[, axis, skipna, level, …])	Return unbiased kurtosis over requested axis using Fisher’s definition of kurtosis (kurtosis of normal == 0.0).
+last(self, offset)	Convenience method for subsetting final periods of time series data based on a date offset.
+last_valid_index(self)	Return index for last non-NA/null value.
+le(self, other[, axis, level])	Get Less than or equal to of dataframe and other, element-wise (binary operator le).
+lookup(self, row_labels, col_labels)	Label-based “fancy indexing” function for DataFrame.
+lt(self, other[, axis, level])	Get Less than of dataframe and other, element-wise (binary operator lt).
+mad(self[, axis, skipna, level])	Return the mean absolute deviation of the values for the requested axis.
+mask(self, cond[, other, inplace, axis, …])	Replace values where the condition is True.
+max(self[, axis, skipna, level, numeric_only])	Return the maximum of the values for the requested axis.
+mean(self[, axis, skipna, level, numeric_only])	Return the mean of the values for the requested axis.
+median(self[, axis, skipna, level, numeric_only])	Return the median of the values for the requested axis.
+melt(self[, id_vars, value_vars, var_name, …])	Unpivot a DataFrame from wide format to long format, optionally leaving identifier variables set.
+memory_usage(self[, index, deep])	Return the memory usage of each column in bytes.
+merge(self, right[, how, on, left_on, …])	Merge DataFrame or named Series objects with a database-style join.
+min(self[, axis, skipna, level, numeric_only])	Return the minimum of the values for the requested axis.
+mod(self, other[, axis, level, fill_value])	Get Modulo of dataframe and other, element-wise (binary operator mod).
+mode(self[, axis, numeric_only, dropna])	Get the mode(s) of each element along the selected axis.
+mul(self, other[, axis, level, fill_value])	Get Multiplication of dataframe and other, element-wise (binary operator mul).
+multiply(self, other[, axis, level, fill_value])	Get Multiplication of dataframe and other, element-wise (binary operator mul).
+ne(self, other[, axis, level])	Get Not equal to of dataframe and other, element-wise (binary operator ne).
+nlargest(self, n, columns[, keep])	Return the first n rows ordered by columns in descending order.
+notna(self)	Detect existing (non-missing) values.
+notnull(self)	Detect existing (non-missing) values.
+nsmallest(self, n, columns[, keep])	Return the first n rows ordered by columns in ascending order.
+nunique(self[, axis, dropna])	Count distinct observations over requested axis.
+pct_change(self[, periods, fill_method, …])	Percentage change between the current and a prior element.
+pipe(self, func, \*args, \*\*kwargs)	Apply func(self, *args, **kwargs).
+pivot(self[, index, columns, values])	Return reshaped DataFrame organized by given index / column values.
+pivot_table(self[, values, index, columns, …])	Create a spreadsheet-style pivot table as a DataFrame.
+plot	alias of pandas.plotting._core.PlotAccessor
+pop(self, item)	Return item and drop from frame.
+pow(self, other[, axis, level, fill_value])	Get Exponential power of dataframe and other, element-wise (binary operator pow).
+prod(self[, axis, skipna, level, …])	Return the product of the values for the requested axis.
+product(self[, axis, skipna, level, …])	Return the product of the values for the requested axis.
+quantile(self[, q, axis, numeric_only, …])	Return values at the given quantile over requested axis.
+query(self, expr[, inplace])	Query the columns of a DataFrame with a boolean expression.
+radd(self, other[, axis, level, fill_value])	Get Addition of dataframe and other, element-wise (binary operator radd).
+rank(self[, axis, method, numeric_only, …])	Compute numerical data ranks (1 through n) along axis.
+rdiv(self, other[, axis, level, fill_value])	Get Floating division of dataframe and other, element-wise (binary operator rtruediv).
+reindex(self[, labels, index, columns, …])	Conform DataFrame to new index with optional filling logic, placing NA/NaN in locations having no value in the previous index.
+reindex_like(self, other[, method, copy, …])	Return an object with matching indices as other object.
+rename(self[, mapper, index, columns, axis, …])	Alter axes labels.
+rename_axis(self[, mapper, index, columns, …])	Set the name of the axis for the index or columns.
+reorder_levels(self, order[, axis])	Rearrange index levels using input order.
+replace(self[, to_replace, value, inplace, …])	Replace values given in to_replace with value.
+resample(self, rule[, how, axis, …])	Resample time-series data.
+reset_index(self[, level, drop, inplace, …])	Reset the index, or a level of it.
+rfloordiv(self, other[, axis, level, fill_value])	Get Integer division of dataframe and other, element-wise (binary operator rfloordiv).
+rmod(self, other[, axis, level, fill_value])	Get Modulo of dataframe and other, element-wise (binary operator rmod).
+rmul(self, other[, axis, level, fill_value])	Get Multiplication of dataframe and other, element-wise (binary operator rmul).
+rolling(self, window[, min_periods, center, …])	Provide rolling window calculations.
+round(self[, decimals])	Round a DataFrame to a variable number of decimal places.
+rpow(self, other[, axis, level, fill_value])	Get Exponential power of dataframe and other, element-wise (binary operator rpow).
+rsub(self, other[, axis, level, fill_value])	Get Subtraction of dataframe and other, element-wise (binary operator rsub).
+rtruediv(self, other[, axis, level, fill_value])	Get Floating division of dataframe and other, element-wise (binary operator rtruediv).
+sample(self[, n, frac, replace, weights, …])	Return a random sample of items from an axis of object.
+select_dtypes(self[, include, exclude])	Return a subset of the DataFrame’s columns based on the column dtypes.
+sem(self[, axis, skipna, level, ddof, …])	Return unbiased standard error of the mean over requested axis.
+set_axis(self, labels[, axis, inplace])	Assign desired index to given axis.
+set_index(self, keys[, drop, append, …])	Set the DataFrame index using existing columns.
+set_value(self, index, col, value[, takeable])	(DEPRECATED) Put single value at passed column and index.
+shift(self[, periods, freq, axis, fill_value])	Shift index by desired number of periods with an optional time freq.
+skew(self[, axis, skipna, level, numeric_only])	Return unbiased skew over requested axis Normalized by N-1.
+slice_shift(self[, periods, axis])	Equivalent to shift without copying data.
+sort_index(self[, axis, level, ascending, …])	Sort object by labels (along an axis).
+sort_values(self, by[, axis, ascending, …])	Sort by the values along either axis.
+sparse	alias of pandas.core.arrays.sparse.SparseFrameAccessor
+squeeze(self[, axis])	Squeeze 1 dimensional axis objects into scalars.
+stack(self[, level, dropna])	Stack the prescribed level(s) from columns to index.
+std(self[, axis, skipna, level, ddof, …])	Return sample standard deviation over requested axis.
+sub(self, other[, axis, level, fill_value])	Get Subtraction of dataframe and other, element-wise (binary operator sub).
+subtract(self, other[, axis, level, fill_value])	Get Subtraction of dataframe and other, element-wise (binary operator sub).
+sum(self[, axis, skipna, level, …])	Return the sum of the values for the requested axis.
+swapaxes(self, axis1, axis2[, copy])	Interchange axes and swap values axes appropriately.
+swaplevel(self[, i, j, axis])	Swap levels i and j in a MultiIndex on a particular axis.
+tail(self[, n])	Return the last n rows.
+take(self, indices[, axis, is_copy])	Return the elements in the given positional indices along an axis.
+to_clipboard(self[, excel, sep])	Copy object to the system clipboard.
+to_csv(self[, path_or_buf, sep, na_rep, …])	Write object to a comma-separated values (csv) file.
+to_dense(self)	(DEPRECATED) Return dense representation of Series/DataFrame (as opposed to sparse).
+to_dict(self[, orient, into])	Convert the DataFrame to a dictionary.
+to_excel(self, excel_writer[, sheet_name, …])	Write object to an Excel sheet.
+to_feather(self, fname)	Write out the binary feather-format for DataFrames.
+to_gbq(self, destination_table[, …])	Write a DataFrame to a Google BigQuery table.
+to_hdf(self, path_or_buf, key, \*\*kwargs)	Write the contained data to an HDF5 file using HDFStore.
+to_html(self[, buf, columns, col_space, …])	Render a DataFrame as an HTML table.
+to_json(self[, path_or_buf, orient, …])	Convert the object to a JSON string.
+to_latex(self[, buf, columns, col_space, …])	Render an object to a LaTeX tabular environment table.
+to_msgpack(self[, path_or_buf, encoding])	(DEPRECATED) Serialize object to input file path using msgpack format.
+to_numpy(self[, dtype, copy])	Convert the DataFrame to a NumPy array.
+to_parquet(self, fname[, engine, …])	Write a DataFrame to the binary parquet format.
+to_period(self[, freq, axis, copy])	Convert DataFrame from DatetimeIndex to PeriodIndex with desired frequency (inferred from index if not passed).
+to_pickle(self, path[, compression, protocol])	Pickle (serialize) object to file.
+to_records(self[, index, …])	Convert DataFrame to a NumPy record array.
+to_sparse(self[, fill_value, kind])	(DEPRECATED) Convert to SparseDataFrame.
+to_sql(self, name, con[, schema, if_exists, …])	Write records stored in a DataFrame to a SQL database.
+to_stata(self, fname[, convert_dates, …])	Export DataFrame object to Stata dta format.
+to_string(self[, buf, columns, col_space, …])	Render a DataFrame to a console-friendly tabular output.
+to_timestamp(self[, freq, how, axis, copy])	Cast to DatetimeIndex of timestamps, at beginning of period.
+to_xarray(self)	Return an xarray object from the pandas object.
+transform(self, func[, axis])	Call func on self producing a DataFrame with transformed values and that has the same axis length as self.
+transpose(self, \*args, \*\*kwargs)	Transpose index and columns.
+truediv(self, other[, axis, level, fill_value])	Get Floating division of dataframe and other, element-wise (binary operator truediv).
+truncate(self[, before, after, axis, copy])	Truncate a Series or DataFrame before and after some index value.
+tshift(self[, periods, freq, axis])	Shift the time index, using the index’s frequency if available.
+tz_convert(self, tz[, axis, level, copy])	Convert tz-aware axis to target time zone.
+tz_localize(self, tz[, axis, level, copy, …])	Localize tz-naive index of a Series or DataFrame to target time zone.
+unstack(self[, level, fill_value])	Pivot a level of the (necessarily hierarchical) index labels, returning a DataFrame having a new level of column labels whose inner-most level consists of the pivoted index labels.
+update(self, other[, join, overwrite, …])	Modify in place using non-NA values from another DataFrame.
+var(self[, axis, skipna, level, ddof, …])	Return unbiased variance over requested axis.
+where(self, cond[, other, inplace, axis, …])	Replace values where the condition is False.
+xs(self, key[, axis, level, drop_level])	Return cross-section from the Series/DataFrame.
